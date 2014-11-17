@@ -5,7 +5,7 @@ import kafka.producer.{KeyedMessage, Producer}
 
 object SampleProducer {
   def main(args: Array[String]): Unit = {
-    val producer: SampleProducer = new SampleProducer(StaticProducerConfig("127.0.0.1:9092"))
+    val producer: SampleProducer = new SampleProducer(KafkaProducerConfig("192.168.1.103:9092"))
 
     while (true) {
       producer.send("test", "hello kafka " + System.currentTimeMillis() % 100)
@@ -16,10 +16,10 @@ object SampleProducer {
 }
 
 
-class SampleProducer(config: StaticProducerConfig) {
+class SampleProducer(config: KafkaProducerConfig) {
 
 
-  val producer = new Producer[AnyRef, AnyRef](config.toProducerConfig)
+  private val producer = new Producer[AnyRef, AnyRef](config.toProducerConfig)
 
 
   def send(topic: String, message: String, partition: Option[String] = None): Unit = {

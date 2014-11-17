@@ -2,18 +2,16 @@ package pl.mpieciukiewicz.microservices.kafka
 
 import java.util.{Properties, UUID}
 
-import kafka.message.{DefaultCompressionCodec, NoCompressionCodec}
+import kafka.message.{NoCompressionCodec, DefaultCompressionCodec}
 import kafka.producer.ProducerConfig
 
-case class StaticProducerConfig(
-                                 brokerList: String,
-                                 clientId: String = UUID.randomUUID().toString,
-                                 synchronously: Boolean = true,
-                                 compress: Boolean = true,
-                                 batchSize: Integer = 200,
-                                 messageSendMaxRetries: Integer = 3,
-                                 requestRequiredAcks: Integer = -1
-                                 ) {
+case class KafkaProducerConfig(brokerList: String,
+                               clientId: String = UUID.randomUUID().toString,
+                               synchronously: Boolean = true,
+                               compress: Boolean = true,
+                               batchSize: Integer = 200,
+                               messageSendMaxRetries: Integer = 3,
+                               requestRequiredAcks: Integer = -1) {
 
 
   def toProducerConfig: ProducerConfig = {
