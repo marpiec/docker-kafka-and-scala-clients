@@ -1,4 +1,4 @@
-package pl.mpieciukiewicz.microservices.kafka
+package pl.mpieciukiewicz.kafka.consumer
 
 import java.util.Properties
 

@@ -1,4 +1,4 @@
-package pl.mpieciukiewicz.microservices.kafka
+package pl.mpieciukiewicz.kafka.producer
 
 import java.util.{Properties, UUID}
 
